@@ -11,6 +11,10 @@ body {
   color: #191a23;
   overflow-x: hidden;
 }
+html {
+  scroll-behavior: smooth;
+}
+
 
 /* General Reset */
 
@@ -115,6 +119,7 @@ ul {
   border-radius: 5px;
   font-weight: bold;
   transition-duration: 1s;
+  cursor: pointer;
 }
 .btn:hover {
   background-color: #b9ff66;
@@ -500,7 +505,7 @@ ul {
 /*accordition*/
 .accordition {
   max-width: 1000px;
-  margin: 0 auto;
+  margin: 2rem auto;
 }
 .class {
   display: flex;
@@ -796,13 +801,14 @@ hr {
 /*Contact US*/
 .contact-section {
   max-width: 1200px;
-  margin: 70px auto;
+  margin: 2rem auto;
 }
 .contact-header{
   display: flex;
   align-items: center;
   gap: 15px;
   margin-bottom: 20px;
+  margin-top: 2rem;
 }
 .contact-badge{
   background-color: #b9ff66;
@@ -897,7 +903,7 @@ hr {
 footer{
   max-width: 1200px;
   background: #2a2d3a;
-  margin: 0 auto;
+  margin: 2rem auto 0 auto;
   border-radius: 10px;
   padding: 1rem;
 }
@@ -976,6 +982,7 @@ footer{
 }
 .news-btn button{
   background-color: #b9ff66;
+  cursor: pointer;
 }
 .footer-line{
   display: block;
@@ -1230,6 +1237,9 @@ footer{
 
 /* Tablet (≤768px) */
 @media (max-width: 768px) {
+  body{
+    overflow-x: hidden;
+  }
   .nav-links {
     display: none; /* hide menu */
   }
