@@ -163,63 +163,80 @@ window.addEventListener("resize", function () {
   }
 });
 
-
-//Testimonial 
+//Testimonial
 let currentSlide = 0;
-        const testimonialCards = document.querySelectorAll('.testimonial-card');
-        const dots = document.querySelectorAll('.dot');
-        const prevBtn = document.getElementById('prevBtn');
-        const nextBtn = document.getElementById('nextBtn');
+const testimonialCards = document.querySelectorAll(".testimonial-card");
+const dots = document.querySelectorAll(".dot");
+const prevBtn = document.getElementById("prevBtn");
+const nextBtn = document.getElementById("nextBtn");
 
-        function showSlide(index) {
-            // Hide all testimonials
-            testimonialCards.forEach(card => card.style.display = 'none');
-            
-            // Show only one testimonial at a time
-            if (testimonialCards[index]) {
-                testimonialCards[index].style.display = 'block';
-            }
+function showSlide(index) {
+  // Hide all testimonials
+  testimonialCards.forEach((card) => (card.style.display = "none"));
 
-            // Update dots
-            dots.forEach(dot => dot.classList.remove('active'));
-            if (dots[index]) {
-                dots[index].classList.add('active');
-            }
-        }
+  // Show only one testimonial at a time
+  if (testimonialCards[index]) {
+    testimonialCards[index].style.display = "block";
+  }
 
-        function nextSlide() {
-            currentSlide = (currentSlide + 1) % testimonialCards.length;
-            showSlide(currentSlide);
-        }
+  // Update dots
+  dots.forEach((dot) => dot.classList.remove("active"));
+  if (dots[index]) {
+    dots[index].classList.add("active");
+  }
+}
 
-        function prevSlide() {
-            currentSlide = currentSlide - 1;
-            if (currentSlide < 0) {
-                currentSlide = testimonialCards.length - 1;
-            }
-            showSlide(currentSlide);
-        }
+function nextSlide() {
+  currentSlide = (currentSlide + 1) % testimonialCards.length;
+  showSlide(currentSlide);
+}
 
-        // Event listeners
-        nextBtn.addEventListener('click', nextSlide);
-        prevBtn.addEventListener('click', prevSlide);
+function prevSlide() {
+  currentSlide = currentSlide - 1;
+  if (currentSlide < 0) {
+    currentSlide = testimonialCards.length - 1;
+  }
+  showSlide(currentSlide);
+}
 
-        dots.forEach((dot, index) => {
-            dot.addEventListener('click', () => {
-                currentSlide = index;
-                showSlide(currentSlide);
-            });
-        });
+// Event listeners
+nextBtn.addEventListener("click", nextSlide);
+prevBtn.addEventListener("click", prevSlide);
 
-        // Handle window resize
-        window.addEventListener('resize', () => {
-            showSlide(currentSlide);
-        });
+dots.forEach((dot, index) => {
+  dot.addEventListener("click", () => {
+    currentSlide = index;
+    showSlide(currentSlide);
+  });
+});
 
-        // Initialize
-        showSlide(currentSlide);
+// Handle window resize
+window.addEventListener("resize", () => {
+  showSlide(currentSlide);
+});
 
-        // Auto-play functionality (optional)
-        setInterval(() => {
-            nextSlide();
-        }, 5000);
+// Initialize
+showSlide(currentSlide);
+
+// Auto-play functionality (optional)
+setInterval(() => {
+  nextSlide();
+}, 5000);
+
+// FAQ functionality
+document.querySelectorAll(".process-question").forEach((question) => {
+  question.addEventListener("click", function () {
+    const faqItem = this.parentElement;
+    const isActive = faqItem.classList.contains("active");
+
+    // Close all FAQ items
+    document.querySelectorAll(".process-item").forEach((item) => {
+      item.classList.remove("active");
+    });
+
+    // Open clicked item if it wasn't active
+    if (!isActive) {
+      faqItem.classList.add("active");
+    }
+  });
+});

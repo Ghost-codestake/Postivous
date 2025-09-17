@@ -18,7 +18,7 @@
                 if (entry.isIntersecting) {
                     setTimeout(() => {
                         entry.target.classList.add('animate');
-                    }, index * 100);
+                    }, index * 100); 
                 }
             });
         }, observerOptions);
